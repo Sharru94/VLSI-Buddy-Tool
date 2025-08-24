@@ -1,2 +1,3 @@
-# VLSI-Buddy-Tool
-“An interactive IC design trainer for analog &amp; digital students with AI explanations”
+# VLSI Buddy Tool – Interactive IC Design Trainer  
+🚀 Learn Analog + Digital IC Design with hands-on simulations, free tools & AI-powered explanations.  
+
