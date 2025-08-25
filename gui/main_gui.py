@@ -1,10 +1,27 @@
-import tkinter as tk
+import ltspice
+import matplotlib.pyplot as plt
 from tkinter import messagebox
 
 # Function for buttons
 def analog_sim():
-    messagebox.showinfo("Analog Simulation", "This will run analog circuits!")
-
+   try:
+        # Load the raw file
+        l = ltspice.Ltspice("analog/divider.raw")
+        l.parse()  # parse simulation results
+        
+        # Extract time and output voltage
+        time = l.get_time()
+        vout = l.get_data('Vout')  # replace 'Vout' with your node name
+        
+        # Plot waveform
+        plt.plot(time, vout)
+        plt.title("Analog Simulation: Divider Circuit")
+        plt.xlabel("Time (s)")
+        plt.ylabel("Voltage (V)")
+        plt.grid(True)
+        plt.show()
+    except Exception as e:
+        messagebox.showerror("Error", f"Cannot run simulation:\n{e}")
 def digital_sim():
     messagebox.showinfo("Digital Simulation", "This will run digital circuits!")
 
@@ -32,3 +49,4 @@ btn_ai.pack(pady=10)
 
 # Run the window
 root.mainloop()
+
